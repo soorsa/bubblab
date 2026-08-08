@@ -40,7 +40,7 @@ const Modal = () => {
         className={`relative space-y-1 ${size}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-white rounded-lg p-1 flex items-start">
+        <div className="bg-white rounded-lg p-2 flex items-start">
           <button
             className="h-7 w-7  border-r border-gray-200 hover:bg-gray-100"
             onClick={goBack}

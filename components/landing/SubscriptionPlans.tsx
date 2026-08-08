@@ -1,6 +1,8 @@
 "use client";
 
 import Button from "@/components/global/Button";
+import JoinPlanModal from "@/components/landing/JoinPlanModal";
+import { useModal } from "@/context/modal.state";
 import { PLANS } from "@/data/constants";
 import { formatPrice } from "@/utils/format.utils";
 import { motion } from "framer-motion";
@@ -16,6 +18,15 @@ const cardVariants = {
 };
 
 export default function SubscriptionPlans() {
+  const modal = useModal();
+  const joinPlan = (plan: (typeof PLANS)[0]) => {
+    modal.open({
+      content: <JoinPlanModal plan={plan} />,
+      title: `Subscribe ${plan.name} Plan`,
+      size: "w-sm sm:w-xl",
+      goBack: modal.close,
+    });
+  };
   return (
     <div id="subscription" className="space-y-12">
       <div className="text-center">
@@ -68,6 +79,7 @@ export default function SubscriptionPlans() {
             </ul>
             <Button
               label={`Choose Plan`}
+              onClick={() => joinPlan(plan)}
               className={`${
                 plan.popular
                   ? "bg-linear-to-r from-secondary to-primary text-white"

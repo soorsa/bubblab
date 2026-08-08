@@ -175,12 +175,12 @@ const InputField: React.FC<InputFieldProps> = ({
       <div
         className={`w-full relative flex ${
           isTextarea ? "flex-col" : "flex-row"
-        } border rounded-xl py-3 ${
+        } border rounded-xl py-3 bg-gray-200 ${
           hasError
             ? "border-red-500"
             : theme === "dark"
             ? "border-gray-400"
-            : "border-gray-300 focus:border-blue-400 active:border-blue-400"
+            : "border-gray-200 focus:border-blue-400 active:border-blue-400"
         } ${className}`}
       >
         {/* Left Icon */}

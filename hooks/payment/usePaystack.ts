@@ -1,44 +1,50 @@
-// /* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // import PaystackPop from "@paystack/inline-js";
-// type PaystackProps = {
-//   email: string;
-//   firstName?: string;
-//   lastName?: string;
-//   phoneNumber?: string;
-//   amount: number; // amount in Naira
-//   reference: string;
-//   onSuccess: (reference: any) => void;
-//   onClose: () => void;
-// };
+type PaystackProps = {
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  phoneNumber?: string;
+  amount: number; // amount in Naira
+  reference: string;
+  onSuccess: (reference: any) => void;
+  onClose: () => void;
+};
 
-// export const usePaystackPayment = () => {
-//   const initializePayment = ({
-//     email,
-//     firstName,
-//     lastName,
-//     phoneNumber,
-//     amount,
-//     onSuccess,
-//     onClose,
-//   }: PaystackProps) => {
-//     const paystack = new PaystackPop();
-//     paystack.newTransaction({
-//       key: "pk_live_588fefa471eec1c09f27fff52aaad203f61e161f", // 🔁 Replace with your Paystack public key
-//       // key: "pk_test_b9e752c6a78ba66ac52db02d686bedf6ccd3a6ac", // 🔁 Replace with your Paystack public key
-//       email,
-//       amount: amount * 100, // convert to kobo
-//       currency: "NGN",
-//       firstName: firstName,
-//       lastName: lastName,
-//       phone: phoneNumber,
-//       onSuccess: (transaction: any) => {
-//         onSuccess(transaction);
-//       },
-//       onCancel() {
-//         onClose();
-//       },
-//     });
-//   };
+export const usePaystackPayment = () => {
+  const initializePayment = async ({
+    email,
+    firstName,
+    lastName,
+    phoneNumber,
+    amount,
+    onSuccess,
+    onClose,
+  }: PaystackProps) => {
+    // 1. Dynamic import on-demand so it never runs on the server
+    const PaystackPopModule = await import("@paystack/inline-js");
+    const PaystackPop = PaystackPopModule.default;
 
-//   return initializePayment;
-// };
+    // 2. Instantiate and initiate transaction
+    const paystack = new PaystackPop();
+    paystack.newTransaction({
+      key: process.env.PK_LIVE || "", // 🔁 Replace with your Paystack public key
+      // key: "pk_test_b9e752c6a78ba66ac52db02d686bedf6ccd3a6ac", // 🔁 Replace with your Paystack public key
+      email,
+      amount: amount * 100, // convert to kobo
+      currency: "NGN",
+      firstName: firstName,
+      lastName: lastName,
+      phone: phoneNumber,
+      onSuccess: (transaction: any) => {
+        onSuccess(transaction);
+      },
+      onCancel() {
+        onClose();
+      },
+    });
+  };
+
+  return initializePayment;
+};

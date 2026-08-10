@@ -23,7 +23,7 @@ export default function SubscriptionPlans() {
     modal.open({
       content: <JoinPlanModal plan={plan} />,
       title: `Subscribe ${plan.name} Plan`,
-      size: "w-sm sm:w-xl",
+      size: "sm:w-2xl",
       goBack: modal.close,
     });
   };

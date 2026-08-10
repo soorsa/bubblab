@@ -19,8 +19,8 @@ export const PLANS = [
     price: 15000,
     color: "indigo",
     features: [
-      "2 pickups / month",
-      "10 items / pickup",
+      "2 pickups per month",
+      "10 items per pickup",
       "wash & Iron",
       "free delivery",
     ],
@@ -29,10 +29,10 @@ export const PLANS = [
   {
     name: "Standard",
     tag: "free laundry bags",
-    price: 30000,
+    price: 35000,
     color: "indigo",
     features: [
-      "up to 15 items",
+      "up to 15 items per week",
       "regular clothes",
       "Wash & Iron",
       "weekly pickup",
@@ -55,5 +55,20 @@ export const PLANS = [
       "free delivery",
     ],
     popular: false,
+  },
+];
+
+export const AVAILABLE_ZONES = [
+  {
+    state: "Lagos",
+    cities: [
+      "Egbeda",
+      "Ikotun",
+      "Isheri",
+      "Idimu",
+      "Igando",
+      "Akesan",
+      "Ijegun",
+    ],
   },
 ];

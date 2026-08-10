@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@paystack/inline-js": "^2.23.1",
+    "canvas-confetti": "^1.9.4",
     "formik": "^2.4.9",
     "framer-motion": "^12.42.2",
     "lucide-react": "^1.23.0",
     "next": "16.2.10",
+    "nodemailer": "^9.0.5",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "yup": "^1.7.1",
@@ -21,7 +23,9 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^20",
+    "@types/nodemailer": "^8.0.1",
     "@types/paystack__inline-js": "^1.0.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",

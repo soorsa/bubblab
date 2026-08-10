@@ -29,6 +29,18 @@ const Modal = () => {
     }
   }, [isOpen, isCloseable, close]);
 
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
@@ -37,10 +49,12 @@ const Modal = () => {
       // onClick={close}
     >
       <div
-        className={`relative space-y-1 ${size}`}
+        className={`relative space-y-1 p-2 ${size} w-[95%] ${
+          isTransModal ? "bg-transparent" : "bg-white shadow-lg"
+        } rounded-lg`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-white rounded-lg p-2 flex items-start">
+        <div className="bg-white rounded-lg flex items-start">
           <button
             className="h-7 w-7  border-r border-gray-200 hover:bg-gray-100"
             onClick={goBack}
@@ -61,11 +75,7 @@ const Modal = () => {
             </button>
           )}
         </div>
-        <div
-          className={`${
-            isTransModal ? "bg-transparent" : "bg-white shadow-lg"
-          } p-4 rounded-lg `}
-        >
+        <div className={`max-h-[70vh] overflow-y-auto scrollbar-hide`}>
           {content}
         </div>
       </div>

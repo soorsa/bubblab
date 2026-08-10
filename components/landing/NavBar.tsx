@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`sticky top-5 w-full z-50 transition-all duration-300 rounded-lg ${
+      className={`sticky top-2 w-full z-50 transition-all duration-300 rounded-lg ${
         scrolled
           ? "bg-white/80 backdrop-blur-md shadow-sm text-gray-700"
           : "bg-white/50 text-gray-700"
@@ -62,7 +62,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Link
-              href="#subscription"
+              href="/subscriptions"
               className="bg-linear-to-r from-secondary to-primary text-white px-6 py-2 rounded-full hover:shadow-lg transition-shadow duration-200"
             >
               Get Started
@@ -101,7 +101,7 @@ const Navbar = () => {
                 </Link>
               ))}
               <Link
-                href="#contact"
+                href="/subscriptions"
                 onClick={() => setIsOpen(false)}
                 className="block bg-linear-to-r from-primary to-secondary text-white px-10 text-xl font-bold py-2 rounded-full text-center"
               >

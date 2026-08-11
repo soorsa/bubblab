@@ -34,8 +34,8 @@ export default function SubscriptionPlans() {
           Our Subscription Plans
         </h3>
         <div className="text-secondary/70 text-sm sm:text-base">
-          choose you the plan that best fits your needs from our available
-          plans.
+          choose you the plan that best fits your needs, fill in your
+          information and our agent will contact you.
         </div>
       </div>
       <div className="grid md:grid-cols-3 gap-6">

@@ -1,4 +1,6 @@
 import SubscriptionPlans from "@/components/landing/SubscriptionPlans";
+import SubscriptionSteps from "@/components/landing/SubscriptionSteps";
+import { Info } from "lucide-react";
 import Image from "next/image";
 
 const page = () => {
@@ -7,22 +9,32 @@ const page = () => {
       <div className="grid sm:grid-cols-2 items-center">
         <div className="space-y-2 px-4 pt-4">
           <div className="">
-            <div className="text-3xl font-bold ">
-              Tired of spending your weekends{" "}
-              <b className="bg-clip-text bg-linear-to-r from-primary to-indigo-600 text-transparent">
-                washing
+            <div className="text-3xl font-bold capitalize">
+              Select your preferred plan below to{" "}
+              <b className="bg-clip-text bg-linear-to-r from-indigo-600 to-primary text-transparent">
+                book
               </b>{" "}
-              and{" "}
+              a{" "}
               <b className="bg-clip-text bg-linear-to-r from-primary to-secondary text-transparent">
-                ironing
+                Free Pickup
               </b>{" "}
-              clothes?
+              now
             </div>
           </div>
           <div className="">
-            For just ₦35,000/month, Bubblab picks up your dirty clothes every
-            week, professionally washes and irons them, then delivers them back
-            to your doorstep.
+            Bubblab picks up your dirty clothes <b>every week</b>,
+            professionally washes and irons them, then delivers them back to
+            your doorstep.
+          </div>
+          <div className="flex gap-3 bg-primary/10 border border-primary/30 rounded-xl p-2">
+            <Info size={28} />
+            <div className="flex-1 space-y-0.5">
+              <p className="font-bold">No upfront payment on this website.</p>
+              <p className="text-sm">
+                You are only to pay when our rider arrives at your address to
+                pick up your clothes.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -35,6 +47,7 @@ const page = () => {
           />
         </div>
       </div>
+      <SubscriptionSteps />
       <SubscriptionPlans />
     </div>
   );

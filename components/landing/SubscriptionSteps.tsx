@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { steps } from "@/data/constants";
+import { SUBSCRIPTION_STEPS } from "@/data/constants";
 import { motion } from "framer-motion";
 
 const containerVariants = {
@@ -19,7 +19,7 @@ const itemVariants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
 };
 
-export default function HowItWorks() {
+export default function SubscriptionSteps() {
   return (
     <section className="mb-16">
       <motion.div
@@ -33,12 +33,15 @@ export default function HowItWorks() {
           how it works
         </span>
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-          Fresh laundry in{" "}
-          <span className="text-indigo-600">4 simple steps</span>
+          Laundry made{" "}
+          <span className="bg-linear-to-r bg-clip-text to-secondary from-primary via-indigo-600 text-transparent">
+            simple & convenient
+          </span>
         </h2>
         <p className="text-gray-500 mt-2 max-w-2xl mx-auto">
-          From pickup to delivery, we handle everything so you don't have to.
-        </p>
+          Choose your plan, tell us where you are, and we'll handle the rest. No
+          payment is required online.
+        </p>{" "}
       </motion.div>
       <div className="relative">
         {/* Connecting Line */}
@@ -51,7 +54,7 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="grid md:grid-cols-4 gap-6"
         >
-          {steps.map((step, index) => (
+          {SUBSCRIPTION_STEPS.map((step, index) => (
             <motion.div
               key={index}
               variants={itemVariants}

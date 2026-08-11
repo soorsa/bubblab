@@ -1,4 +1,16 @@
-import { PackageOpen, Recycle, Timer, TruckElectric } from "lucide-react";
+import {
+  FilePenLine,
+  ListCheck,
+  PackageOpen,
+  PhoneCall,
+  Recycle,
+  ShoppingBasket,
+  Smartphone,
+  Timer,
+  Truck,
+  TruckElectric,
+  WashingMachine,
+} from "lucide-react";
 export const NAVLINKS = [
   { name: "Subscription", href: "#subscription" },
   { name: "Pickup", href: "#pickup" },
@@ -70,5 +82,67 @@ export const AVAILABLE_ZONES = [
       "Akesan",
       "Ijegun",
     ],
+  },
+];
+
+export const steps = [
+  {
+    number: "01",
+    icon: Smartphone,
+    title: "Sign up",
+    description:
+      "Choose your subscription plan or schedule a one-time pickup in seconds.",
+  },
+  {
+    number: "02",
+    icon: ShoppingBasket,
+    title: "We pick up",
+    description:
+      "Our team collects your laundry at your preferred time — free of charge.",
+  },
+  {
+    number: "03",
+    icon: WashingMachine,
+    title: "Premium cleaning",
+    description:
+      "Eco-friendly dry cleaning & laundry with 24h turnaround time.",
+  },
+  {
+    number: "04",
+    icon: Truck,
+    title: "Fresh delivery",
+    description:
+      "Get your freshly cleaned laundry delivered right to your doorstep.",
+  },
+];
+
+export const SUBSCRIPTION_STEPS = [
+  {
+    number: "01",
+    icon: ListCheck,
+    title: "Select a plan",
+    description:
+      "Choose the laundry subscription plan that best fits your needs.",
+  },
+  {
+    number: "02",
+    icon: FilePenLine,
+    title: "Fill the form",
+    description:
+      "Tell us your contact details and pickup address so we know where to find you.",
+  },
+  {
+    number: "03",
+    icon: PhoneCall,
+    title: "We contact you",
+    description:
+      "We'll reach out to confirm your details and schedule your free pickup.",
+  },
+  {
+    number: "04",
+    icon: WashingMachine,
+    title: "Pay on Pickup",
+    description:
+      "Our rider picks up your clothes and you pay at your doorstep. We then wash, iron and deliver them back to you.",
   },
 ];

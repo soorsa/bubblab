@@ -50,7 +50,7 @@ const JoinPlanModal: React.FC<Prop> = ({ plan }) => {
         `*Name:* ${values.first_name} ${values.last_name} \n` +
         `*Phone:* ${values.whatsapp_phone}, ${values.phone} \n` +
         `*Selected Plan:* ${plan.name} (#${plan.price}/monthly) \n` +
-        `*Area:* ${values.city} \n` +
+        `*Area:* ${values.city}, ${values.state} \n` +
         `*Address:* ${values.address} \n`;
       const whatsappURL = `https://wa.me/2348163245032?text=${encodeURIComponent(
         message
@@ -76,15 +76,15 @@ const JoinPlanModal: React.FC<Prop> = ({ plan }) => {
         if (!response.ok) {
           throw new Error("Failed to submit order");
         }
-        modal.open({
-          title: "🎉 Subscription Activated!",
-          content: <SuccessModal />,
-          size: "sm:w-sm",
-        });
         FBPixel.event("Subscribe", {
           content_name: plan.name,
           currency: "USD",
           value: 2,
+        });
+        modal.open({
+          title: "🎉 Subscription Activated!",
+          content: <SuccessModal action={sendWhatsAppMsg} />,
+          size: "sm:w-sm",
         });
         sendWhatsAppMsg();
         setloading(false);

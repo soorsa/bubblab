@@ -42,17 +42,22 @@ export default function SchedulePickup() {
                 content: <PickupModal />,
                 goBack: modal.close,
                 title: "Schedule a pickup",
+                size: "sm:w-sm",
               });
             }}
             className="bg-secondary! text-white px-6 rounded-xl font-semibold sm:w-fit!"
           />
           <Button
+            type="link"
+            link="https://wa.me/2348163245032"
             label="Schedule on WhatsApp"
             rightIcon={<MessageCircle size={18} />}
             className="bg-green-500! text-white sm:w-fit! px-6 rounded-xl"
           />
           <Button
             label="Call us"
+            type="link"
+            link="tel:2348163245032"
             icon={<PhoneCall size={18} />}
             className="sm:w-fit! px-6 rounded-xl bg-indigo-600! text-white"
           />

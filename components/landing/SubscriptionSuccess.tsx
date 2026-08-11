@@ -11,10 +11,12 @@ import React, { useEffect } from "react";
 
 interface SuccessModalProps {
   message?: string;
+  action?: () => void;
 }
 
 const SuccessModal: React.FC<SuccessModalProps> = ({
   message = "Your laundry subscription has been successfully activated.",
+  action,
 }) => {
   const modal = useModal();
   // Trigger confetti when modal opens
@@ -92,9 +94,8 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
         <Button label="Close" className="bg-gray-200!" onClick={modal.close} />
         <div className="col-span-2">
           <Button
-            link="https://wa.me/2348163245032"
-            type="link"
-            label="Chat on WhatsApp"
+            onClick={action}
+            label="Book on WhatsApp"
             className="bg-linear-to-r from-green-500 to-secondary text-white"
             icon={
               <div className="relative h-5 w-5">

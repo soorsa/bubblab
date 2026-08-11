@@ -14,6 +14,14 @@ export const metadata: Metadata = {
   title: "bubblab · Dry Cleaning & Laundry",
   description:
     "Monthly subscription laundry service with free pickup and delivery.",
+  twitter: {
+    card: "summary_large_image",
+    images: "/icons/laundry-and-dry cleaning-pana.svg",
+  },
+  openGraph: {
+    type: "website",
+    images: "/icons/laundry-and-dry cleaning-pana.svg",
+  },
 };
 
 export default function RootLayout({

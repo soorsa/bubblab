@@ -30,8 +30,12 @@ const Button: React.FC<ButtonProps> = ({
   if (type === "link") {
     return (
       <Link
-        href={link}
-        className={`w-full bg-white flex items-center justify-center py-2 rounded-full transition duration-300 hover:underline underline-offset-3 ${className}
+        href={disabled ? "" : link}
+        className={`w-full bg-white flex items-center justify-center py-2 rounded-full transition duration-300 hover:underline underline-offset-3 ${className} ${
+          disabled || isLoading
+            ? "opacity-50 cursor-not-allowed"
+            : "hover:opacity-50"
+        }
               `}
       >
         <div className="flex items-center justify-center w-full">

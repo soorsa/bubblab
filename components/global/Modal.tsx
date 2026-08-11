@@ -45,11 +45,11 @@ const Modal = () => {
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-md z-50"
+      className="fixed inset-0 flex items-center justify-center p-2 bg-black/50 backdrop-blur-md z-50"
       // onClick={close}
     >
       <div
-        className={`relative space-y-1 p-2 ${size} w-[95%] ${
+        className={`relative space-y-1 p-2 ${size} w-full ${
           isTransModal ? "bg-transparent" : "bg-white shadow-lg"
         } rounded-lg`}
         onClick={(e) => e.stopPropagation()}

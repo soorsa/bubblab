@@ -6,7 +6,6 @@ import Button from "@/components/global/Button";
 import SuccessModal from "@/components/landing/SubscriptionSuccess";
 import { useModal } from "@/context/modal.state";
 import { AVAILABLE_ZONES, PLANS } from "@/data/constants";
-import { usePaystackPayment } from "@/hooks/payment/usePaystack";
 import * as FBPixel from "@/utils/FBPixel.utils";
 import { formatPrice } from "@/utils/format.utils";
 import { Form, Formik } from "formik";
@@ -18,7 +17,6 @@ interface Prop {
   plan: (typeof PLANS)[0];
 }
 const JoinPlanModal: React.FC<Prop> = ({ plan }) => {
-  const paystack = usePaystackPayment();
   const modal = useModal();
   const [loading, setloading] = useState(false);
   const states = AVAILABLE_ZONES.map((state) => ({
@@ -46,6 +44,20 @@ const JoinPlanModal: React.FC<Prop> = ({ plan }) => {
     city: Yup.string().required("required"),
   });
   const submit = async (values: typeof initialValues) => {
+    const sendWhatsAppMsg = () => {
+      const message =
+        `Hello Bubblab, I want to book a new subscription: \n\n` +
+        `*Name:* ${values.first_name} ${values.last_name} \n` +
+        `*Phone:* ${values.whatsapp_phone}, ${values.phone} \n` +
+        `*Selected Plan:* ${plan.name} (#${plan.price}/monthly) \n` +
+        `*Area:* ${values.city} \n` +
+        `*Address:* ${values.address} \n`;
+      const whatsappURL = `https://wa.me/2348163245032?text=${encodeURIComponent(
+        message
+      )}`;
+      window.location.href = whatsappURL;
+    };
+
     const sendmail = async () => {
       try {
         setloading(true);
@@ -74,6 +86,7 @@ const JoinPlanModal: React.FC<Prop> = ({ plan }) => {
           currency: "USD",
           value: 2,
         });
+        sendWhatsAppMsg();
         setloading(false);
       } catch (error) {
         console.error(error);
@@ -81,21 +94,6 @@ const JoinPlanModal: React.FC<Prop> = ({ plan }) => {
       }
     };
     sendmail();
-
-    // paystack({
-    //   email: values.email,
-    //   lastName: values.last_name,
-    //   firstName: values.first_name,
-    //   phoneNumber: values.phone,
-    //   amount: plan.price,
-    //   reference: "",
-    //   onSuccess: () => {
-    //     sendmail();
-    //   },
-    //   onClose: () => {
-    //     sendmail();
-    //   },
-    // });
   };
   return (
     <div className="p-2 relative">
@@ -179,6 +177,13 @@ const JoinPlanModal: React.FC<Prop> = ({ plan }) => {
                         name="whatsapp_phone"
                         placeholder="WhatsApp Phone No."
                       />
+                      {/* <PhoneInputWithCountry
+                        name="whatsapp_phone"
+                        placeholder="WhatsApp Phone No."
+                        label="WhatsApp Number"
+                        required
+                        defaultCountry="234"
+                      /> */}
                       <InputField name="phone" placeholder="Phone No." />
                     </div>
                     <InputField name="email" placeholder="Email Address" />
@@ -203,27 +208,28 @@ const JoinPlanModal: React.FC<Prop> = ({ plan }) => {
                     <InputField name="address" placeholder="Street" />
                   </div>
                 </div>
-              </div>
-              <div className="sticky bottom-0 bg-white pt-2 sm:col-span-2 grid sm:grid-cols-2 gap-2">
-                <Button
-                  link="https://wa.me/2348163245032"
-                  type="link"
-                  label="Chat on WhatsApp"
-                  className="bg-linear-to-r from-green-500 to-secondary text-white order-2 sm:order-1"
-                  icon={
-                    <div className="relative h-5 w-5">
-                      <Image src={`/icons/whatsapp-app.svg`} alt="" fill />
-                    </div>
-                  }
-                />
-                <Button
-                  type="submit"
-                  label={`Book Now!... Pay on Pickup`}
-                  disabled={!isValid || loading}
-                  isLoading={loading}
-                  loadingLabel="Sending request"
-                  className="bg-linear-to-r from-secondary to-primary text-white order-1 sm:order-2"
-                />
+                <div className="sticky bottom-0 bg-white pt-2 space-y-1">
+                  <Button
+                    type="submit"
+                    label={`Book Free Pickup`}
+                    disabled={!isValid || loading}
+                    isLoading={loading}
+                    loadingLabel="Sending request"
+                    className="bg-linear-to-r from-secondary to-primary text-white rounded-xl"
+                  />
+                  <Button
+                    link="https://wa.me/2348163245032"
+                    type="link"
+                    disabled={!isValid}
+                    label="Book on WhatsApp"
+                    className="hidden bg-linear-to-r from-green-500 to-secondary text-white rounded-xl"
+                    icon={
+                      <div className="relative h-5 w-5">
+                        <Image src={`/icons/whatsapp-app.svg`} alt="" fill />
+                      </div>
+                    }
+                  />
+                </div>
               </div>
             </Form>
           );

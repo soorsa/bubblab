@@ -363,7 +363,7 @@ export async function POST(request: Request) {
                   margin-bottom: 24px;
                 "
               >
-                ${data.first_name} ${data.last_name} who resides at
+                ${data.fullname} who resides at
                 <strong>${data.address}, ${data.city} ${data.state}</strong> wants to
                 subscribe to
                 <strong style="color: #1e2b2f">${data.plan_name} ₦${data.plan_price}/month</strong>
@@ -391,10 +391,10 @@ export async function POST(request: Request) {
                   box-sizing: border-box;
                 "
               >
-                💬 Chat ${data.first_name} on WhatsApp
+                💬 Chat ${data.fullname} on WhatsApp
               </a>
               <a
-                href="tel:${data.phone}"
+                href="tel:${data.whatsapp_phone}"
                 class="btn-secondary"
                 style="
                   display: inline-block;
@@ -412,7 +412,7 @@ export async function POST(request: Request) {
                   margin-top: 8px;
                 "
               >
-                📞 Call ${data.first_name} now
+                📞 Call ${data.fullname} now
               </a>
 
               <div

@@ -41,10 +41,10 @@ export const useSendLeadToMail = () => {
       if (!response.ok) {
         throw new Error("Failed to submit order");
       }
-      FBPixel.event("Lead", {
+      FBPixel.event("StartTrial", {
         content_name: plan?.name,
         currency: "USD",
-        value: 2,
+        value: 0,
       });
       modal.open({
         title: "🎉 Subscription Activated!",

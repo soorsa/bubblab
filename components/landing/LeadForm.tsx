@@ -18,7 +18,10 @@ export const initialValues = {
   plan: "",
 };
 const LeadForm = () => {
-  FBPixel.event("ViewContent");
+  FBPixel.event("ViewContent", {
+    content_ids: ["lead form"],
+    content_type: "product",
+  });
 
   const [loading, setloading] = useState(false);
   const validationSchema = Yup.object().shape({

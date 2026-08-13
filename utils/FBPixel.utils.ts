@@ -6,7 +6,7 @@ export const pageview = () => {
 };
 
 // https://facebook.com#track-custom-actions
-export const event = (name: string, options: PixelOptions) => {
+export const event = (name: string, options?: PixelOptions) => {
   if (typeof window !== "undefined" && window.fbq) {
     window.fbq("track", name, options);
   }

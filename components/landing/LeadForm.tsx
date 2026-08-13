@@ -3,6 +3,7 @@ import Button from "@/components/global/Button";
 import LeadIntroForm from "@/components/landing/LeadIntroForm";
 import { AVAILABLE_ZONES } from "@/data/constants";
 import { useSendLeadToMail } from "@/hooks/leads/useSendLeads";
+import * as FBPixel from "@/utils/FBPixel.utils";
 import { Form, Formik } from "formik";
 import { ArrowRight, Info } from "lucide-react";
 import { useState } from "react";
@@ -17,6 +18,8 @@ export const initialValues = {
   plan: "",
 };
 const LeadForm = () => {
+  FBPixel.event("ViewContent");
+
   const [loading, setloading] = useState(false);
   const validationSchema = Yup.object().shape({
     whatsapp_phone: Yup.mixed().required("required"),

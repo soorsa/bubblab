@@ -62,19 +62,18 @@ const LeadForm = () => {
                   cities={cities}
                 />
               </div>
-              {isValid && (
-                <div className="px-4">
-                  <Button
-                    label="Done"
-                    disabled={!isValid || loading}
-                    isLoading={loading}
-                    loadingLabel="Processing"
-                    type="submit"
-                    className="font-bold! text-lg bg-primary! text-white rounded-lg"
-                    rightIcon={<ArrowRight />}
-                  />
-                </div>
-              )}
+
+              <div className="px-4">
+                <Button
+                  label="Done"
+                  disabled={!isValid || loading}
+                  isLoading={loading}
+                  loadingLabel="Processing"
+                  type="submit"
+                  className="font-bold! text-lg bg-primary! text-white rounded-lg"
+                  rightIcon={<ArrowRight />}
+                />
+              </div>
             </Form>
           );
         }}

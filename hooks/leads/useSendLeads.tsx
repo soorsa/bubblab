@@ -1,4 +1,6 @@
 import { initialValues } from "@/components/landing/LeadForm";
+import SuccessModal from "@/components/landing/SubscriptionSuccess";
+import { useModal } from "@/context/modal.state";
 import { PLANS } from "@/data/constants";
 import * as FBPixel from "@/utils/FBPixel.utils";
 interface Prop {
@@ -6,6 +8,7 @@ interface Prop {
   values: typeof initialValues;
 }
 export const useSendLeadToMail = () => {
+  const modal = useModal();
   const sendLead = async ({ values, setIsLoading }: Prop) => {
     try {
       setIsLoading(true);
@@ -23,7 +26,6 @@ export const useSendLeadToMail = () => {
         )}`;
         window.location.href = whatsappURL;
       };
-      sendWhatsAppMsg();
       const response = await fetch("/api/send-mail", {
         method: "POST",
         headers: {
@@ -39,16 +41,16 @@ export const useSendLeadToMail = () => {
       if (!response.ok) {
         throw new Error("Failed to submit order");
       }
-      FBPixel.event("Subscribe", {
+      FBPixel.event("Lead", {
         content_name: plan?.name,
         currency: "USD",
         value: 2,
       });
-      //   modal.open({
-      //     title: "🎉 Subscription Activated!",
-      //     content: <SuccessModal action={sendWhatsAppMsg} />,
-      //     size: "sm:w-sm",
-      //   });
+      modal.open({
+        title: "🎉 Subscription Activated!",
+        content: <SuccessModal action={sendWhatsAppMsg} />,
+        size: "sm:w-sm",
+      });
       sendWhatsAppMsg();
       setIsLoading(false);
     } catch (error) {

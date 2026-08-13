@@ -27,6 +27,7 @@ export const FEATURES = [
 export const PLANS = [
   {
     name: "Basic",
+    description: "Recommeded for single individuals living in Lagos",
     tag: "",
     price: 15000,
     color: "indigo",
@@ -40,6 +41,8 @@ export const PLANS = [
   },
   {
     name: "Standard",
+    description:
+      "Recommeded for individuals, couples & small families living in Lagos",
     tag: "free laundry bags",
     price: 35000,
     color: "indigo",
@@ -55,6 +58,9 @@ export const PLANS = [
   },
   {
     name: "Family",
+    description:
+      "Recommeded for couples & small/large families living in Lagos",
+
     tag: "free laundry bags",
     price: 60000,
     color: "purple",

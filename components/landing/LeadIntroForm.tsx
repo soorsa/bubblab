@@ -26,11 +26,11 @@ const LeadIntroForm: React.FC<Prop> = ({ states, cities, values }) => {
           className="absolute inset-0 z-0 opacity-10"
         />
 
-        <div className="space-y-6 p-4 relative z-10 h-full w-full ">
+        <div className="space-y-6 p-4 relative z-10 h-full w-full">
           <div className="space-y-2">
             {plan ? (
               <div
-                className={`cursor-pointer flex flex-col p-6 rounded-3xl relative bg-primary/10`}
+                className={`cursor-pointer flex flex-col p-6 rounded-xl relative bg-primary/10`}
               >
                 {plan.popular && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-xs px-4 py-1 rounded-full flex items-center gap-1">
@@ -139,7 +139,7 @@ const LeadIntroForm: React.FC<Prop> = ({ states, cities, values }) => {
             <Select
               name="plan"
               label="Which Plan do You Like?"
-              //   placeholder="Select"
+              placeholder="Select a Plan"
               options={plan_options}
             />
           </div>

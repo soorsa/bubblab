@@ -29,7 +29,7 @@ const Select: React.FC<SelectProps> = ({
 
   return (
     <div className="w-full text-left">
-      {label && <div className="text-xs text-gray-500 mb-0.5">{label}</div>}
+      {label && <div className="text-base font-semibold mb-1">{label}</div>}
 
       <div
         className={`w-full relative flex flex-row items-center border rounded-xl py-3 ${

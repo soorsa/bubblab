@@ -4,7 +4,7 @@ import LeadIntroForm from "@/components/landing/LeadIntroForm";
 import { AVAILABLE_ZONES } from "@/data/constants";
 import { useSendLeadToMail } from "@/hooks/leads/useSendLeads";
 import { Form, Formik } from "formik";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Info } from "lucide-react";
 import { useState } from "react";
 import * as Yup from "yup";
 
@@ -38,7 +38,7 @@ const LeadForm = () => {
     });
   };
   return (
-    <div>
+    <div className="">
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -54,7 +54,7 @@ const LeadForm = () => {
             })) || [];
 
           return (
-            <Form>
+            <Form className="w-full sm:w-1/2 sm:mx-auto">
               <div className="">
                 <LeadIntroForm
                   values={values}
@@ -62,16 +62,16 @@ const LeadForm = () => {
                   cities={cities}
                 />
               </div>
-
               <div className="px-4">
                 <Button
-                  label="Done"
+                  label={`${isValid ? "Done" : "Fill the form"}`}
                   disabled={!isValid || loading}
                   isLoading={loading}
                   loadingLabel="Processing"
                   type="submit"
                   className="font-bold! text-lg bg-primary! text-white rounded-lg"
-                  rightIcon={<ArrowRight />}
+                  icon={!isValid && <Info />}
+                  rightIcon={isValid && <ArrowRight />}
                 />
               </div>
             </Form>

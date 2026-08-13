@@ -171,7 +171,7 @@ const InputField: React.FC<InputFieldProps> = ({
 
   return (
     <div className="w-full text-left">
-      <div className="text-xs font-semibold">{label}</div>
+      {label && <div className="text-base font-semibold mb-1">{label}</div>}
       <div
         className={`w-full relative flex ${
           isTextarea ? "flex-col" : "flex-row"

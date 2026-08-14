@@ -55,7 +55,7 @@ fbq('track', 'PageView');
         />
       </head>
       <body className={`${comfortaa.className} scrollbar-hide`}>
-        <main className="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8 py-7 scrollbar-hide">
+        <main className="max-w-6xl mx-auto p-2 scrollbar-hide">
           <Modal />
           <Navbar />
           {children}

@@ -28,9 +28,53 @@ const LeadIntroForm: React.FC<Prop> = ({ states, cities, values }) => {
 
         <div className="space-y-6 p-4 relative z-10 h-full w-full">
           <div className="space-y-2">
-            {plan ? (
+            <div className="">
+              <div className="text-3xl font-bold capitalize">
+                Book a free pickup now{" "}
+              </div>
+            </div>
+            <div className="">
+              Bubblab picks up your dirty clothes <b>every week</b>,
+              professionally washes and irons them, then delivers them back to
+              your doorstep.
+            </div>
+            {/* <div className="flex gap-3 bg-primary/10 border border-primary/30 rounded-xl p-2">
+            <Info size={28} />
+            <div className="flex-1 space-y-0.5">
+              <p className="font-bold">No upfront payment on this website.</p>
+              <p className="text-sm">
+                You are only to pay when our rider arrives at your address to
+                pick up your clothes.
+              </p>
+            </div>
+          </div> */}
+            <div className="flex gap-3 bg-primary/10 border border-primary/30 rounded-xl p-2">
+              <Info size={20} />
+              <div className="flex-1 space-y-1 font-semibold">
+                <div className="text-base sm:text-sm">
+                  Serving these{" "}
+                  <b className="underline underline-offset-2">
+                    {states.map((state) => `${state.label}`)}
+                  </b>{" "}
+                  zones:
+                </div>
+                <div className="flex gap-x-2 gap-y-1 text-xs flex-wrap">
+                  {AVAILABLE_ZONES[0].cities.map((zone, i) => (
+                    <li
+                      className="flex items-center gap-0.5 bg-green-600 text-white py-0.5 font-bold px-2 rounded-md"
+                      key={i}
+                    >
+                      <MapPin size={10} color="white" />
+                      {zone}
+                    </li>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {plan && (
               <div
-                className={`cursor-pointer flex flex-col p-6 rounded-xl relative bg-primary/10`}
+                className={`cursor-pointer mt-5 flex flex-col p-6 rounded-xl relative bg-primary/10`}
               >
                 {plan.popular && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-xs px-4 py-1 rounded-full flex items-center gap-1">
@@ -46,60 +90,17 @@ const LeadIntroForm: React.FC<Prop> = ({ states, cities, values }) => {
                     {plan.description}
                   </div>
                 </div>
-                <ul className="mt-2 flex-1 space-y-2 text-sm text-gray-600 w-fit mx-auto border-t border-primary/40 pt-5">
+                <ul className="mt-2 flex-1 space-y-2 text-gray-600 w-fit mx-auto border-t border-primary/40 pt-5">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
+                    <li
+                      key={feature}
+                      className="flex items-center gap-2 capitalize"
+                    >
                       <CheckCircle2 size={16} /> <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            ) : (
-              <>
-                <div className="">
-                  <div className="text-3xl font-bold capitalize">
-                    Book a free pickup now{" "}
-                  </div>
-                </div>
-                <div className="">
-                  Bubblab picks up your dirty clothes <b>every week</b>,
-                  professionally washes and irons them, then delivers them back
-                  to your doorstep.
-                </div>
-                {/* <div className="flex gap-3 bg-primary/10 border border-primary/30 rounded-xl p-2">
-            <Info size={28} />
-            <div className="flex-1 space-y-0.5">
-              <p className="font-bold">No upfront payment on this website.</p>
-              <p className="text-sm">
-                You are only to pay when our rider arrives at your address to
-                pick up your clothes.
-              </p>
-            </div>
-          </div> */}
-                <div className="flex gap-3 bg-primary/10 border border-primary/30 rounded-xl p-2">
-                  <Info size={20} />
-                  <div className="flex-1 space-y-1 font-semibold">
-                    <div className="text-base sm:text-sm">
-                      Serving these{" "}
-                      <b className="underline underline-offset-2">
-                        {states.map((state) => `${state.label}`)}
-                      </b>{" "}
-                      zones:
-                    </div>
-                    <div className="flex gap-x-2 gap-y-1 text-xs flex-wrap">
-                      {AVAILABLE_ZONES[0].cities.map((zone, i) => (
-                        <li
-                          className="flex items-center gap-0.5 bg-green-600 text-white py-0.5 font-bold px-2 rounded-md"
-                          key={i}
-                        >
-                          <MapPin size={10} color="white" />
-                          {zone}
-                        </li>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </>
             )}
           </div>
 

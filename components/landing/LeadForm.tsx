@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/components/global/Button";
 import LeadIntroForm from "@/components/landing/LeadIntroForm";
-import { AVAILABLE_ZONES } from "@/data/constants";
+import { AVAILABLE_ZONES, PLANS } from "@/data/constants";
 import { useSendLeadToMail } from "@/hooks/leads/useSendLeads";
 import * as FBPixel from "@/utils/FBPixel.utils";
 import { Form, Formik } from "formik";
@@ -15,7 +15,7 @@ export const initialValues = {
   state: "Lagos",
   city: "",
   address: "",
-  plan: "",
+  plan: PLANS[1].name,
 };
 const LeadForm = () => {
   FBPixel.event("ViewContent", {
@@ -30,6 +30,7 @@ const LeadForm = () => {
     address: Yup.string().required("required"),
     state: Yup.string().required("required"),
     city: Yup.string().required("required"),
+    plan: Yup.string().required("required"),
   });
   const states = AVAILABLE_ZONES.map((state) => ({
     value: state.state,

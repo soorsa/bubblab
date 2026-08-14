@@ -71,7 +71,7 @@ const LeadForm = () => {
               </div>
               <div className="px-4">
                 <Button
-                  label={`${isValid ? "Done" : "Fill the form"}`}
+                  label={`${isValid ? "Book Free Pickup" : "Fill the form"}`}
                   disabled={!isValid || loading}
                   isLoading={loading}
                   loadingLabel="Processing"
